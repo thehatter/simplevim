@@ -1,0 +1,7 @@
+- if user_signed_in?
+	h3 Logged like: #{current_user.email}
+	- User.all.each do |person|
+		= link_to person.email, user_path(person)
+		br
+		br
+	= link_to 'Home', root_path

@@ -1,0 +1,5 @@
+h3 #{current_user.email}
+= link_to 'Home', root_path 
+br
+	- if current_user.admin?
+		= link_to 'Delete', current_user, method: :delete, data: {confirm: "Are you sure?"}
