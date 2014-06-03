@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'ruby'
 gem 'rails', '4.1.1'
 gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
@@ -14,7 +13,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'spring', group: :development
 gem 'devise'
-gem 'better_errors', group: :development
+#gem 'better_errors', group: :development
 gem 'annotate', group: :development
 gem 'rails_12factor'
 gem 'slim'
+
