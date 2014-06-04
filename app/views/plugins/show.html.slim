@@ -6,6 +6,7 @@ h3 Link:
 u = @plugin.link
 br
 br
-= link_to 'Edit', edit_plugin_path(@plugin)
+- if current_user.admin? || current_user.id == @plugin.user_id
+	= link_to 'Edit', edit_plugin_path(@plugin)
 br
 = link_to 'Back', plugins_path

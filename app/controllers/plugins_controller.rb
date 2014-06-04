@@ -1,5 +1,6 @@
 class PluginsController < ApplicationController
   before_action :set_plugin, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
     @plugins = Plugin.all
@@ -16,7 +17,7 @@ class PluginsController < ApplicationController
   end
 
   def create
-    @plugin = Plugin.new(plugin_params)
+    @plugin = current_user.plugins.new(plugin_params)
 
       if @plugin.save
         flash[:success] = "Plugin was successfully created"
@@ -56,5 +57,12 @@ class PluginsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def plugin_params
       params.require(:plugin).permit(current_user.id, :title, :description, :link)
+    end
+
+    def correct_user
+      unless current_user.admin? || current_user.id == @plugin.user_id
+        flash[:error] = 
+        redirect_to root_path
+      end
     end
 end

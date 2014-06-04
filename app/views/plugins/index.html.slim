@@ -10,8 +10,9 @@ table
       tr
         td = plugin.title
         td = link_to 'Show', plugin
-        td = link_to 'Edit', edit_plugin_path(plugin)
-        td = link_to 'Destroy', plugin, method: :delete, data: { confirm: 'Are you sure?' }
+        - if current_user.admin? || current_user.id == plugin.user_id
+          td = link_to 'Edit', edit_plugin_path(plugin)
+          td = link_to 'Destroy', plugin, method: :delete, data: { confirm: 'Are you sure?' }
 
 br
 

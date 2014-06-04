@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
 	def index
 	end
+
+	def edit
+		@user = User.find(params[:id])
+		@user.update_attributes(:admin => 'true')
+		redirect_to @user
+	end
 	
 	def show
 		@user = User.find(params[:id])
