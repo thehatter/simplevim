@@ -8,9 +8,11 @@
 </head>
 
 <ul class="hmenu"> 
+  <% if user_signed_in? %> <%= current_user.email %> <% end %>
   <%= render 'devise/menu/registration_items' %>
   <%= render 'devise/menu/login_items' %>
   <%= link_to "Add plugin", new_plugin_path %>
+  <%= link_to 'Show all plugins', plugins_path %>
 </ul>
 
 <%= yield %>

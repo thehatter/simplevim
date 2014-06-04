@@ -1,6 +1,11 @@
-h1 = @plugin.title
-h1 = @plugin.description
-h1 = @plugin.link
+h3 Title:
+u = @plugin.title
+h3 Description: 
+u = @plugin.description
+h3 Link: 
+u = @plugin.link
+br
+br
 = link_to 'Edit', edit_plugin_path(@plugin)
 br
 = link_to 'Back', plugins_path
