@@ -61,7 +61,7 @@ class PluginsController < ApplicationController
 
     def correct_user
       unless current_user.admin? || current_user.id == @plugin.user_id
-        flash[:error] = 
+        flash[:error] = "Access denied"
         redirect_to root_path
       end
     end
