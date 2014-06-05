@@ -21,5 +21,9 @@ ul.hmenu {
 }
 
 ul.hmenu li {
-  display: inline;  
+  display: inline;
+}
+
+#navbar {
+	padding: 10px;
 }
