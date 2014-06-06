@@ -16,4 +16,4 @@ gem 'devise'
 #gem 'better_errors', group: :development
 gem 'annotate', group: :development
 gem 'slim-rails'
-
+gem 'acts-as-taggable-on'

@@ -4,7 +4,14 @@ class PostsController < ApplicationController
 
 
 	def index
-		@posts = Post.all
+    if params[:tag]
+      @posts = Post.tagged_with(params[:tag])
+    else
+		  @posts = Post.all
+    end
+  # эта часть для отображения списка ТОП-10 тегов
+    @tags = Tag.find_each
+    @tags.sort.first(10)
 	end
 
 	def show
@@ -21,7 +28,7 @@ class PostsController < ApplicationController
         flash[:success] = "Post was successfully created"
         redirect_to @post
       else
-        flash[:error] = "Post33 was not created"
+        flash[:error] = "Post was not created"
         render :new
       end
 	end
@@ -58,7 +65,7 @@ private
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
-    params.require(:post).permit(current_user.id, :title, :body)
+    params.require(:post).permit(current_user.id, :title, :body, :tag_list, :tag)
   end
 
   def correct_user

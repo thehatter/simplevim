@@ -1,4 +1,4 @@
-h2 Plugins
+h1 Listing plugins
 
 table
   thead
@@ -10,10 +10,9 @@ table
       tr
         td = plugin.title
         td = link_to 'Show', plugin
-        - if current_user.admin? || current_user.id == plugin.user_id
-          td = link_to 'Edit', edit_plugin_path(plugin)
-          td = link_to 'Destroy', plugin, method: :delete, data: { confirm: 'Are you sure?' }
+        td = link_to 'Edit', edit_plugin_path(plugin)
+        td = link_to 'Destroy', plugin, method: :delete, data: { confirm: 'Are you sure?' }
 
 br
 
-= link_to 'New Plugin', new_plugin_path
+= link_to 'New Plugin', new_plugin_path 
