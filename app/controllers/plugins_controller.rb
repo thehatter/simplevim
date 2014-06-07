@@ -3,7 +3,11 @@ class PluginsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @plugins = Plugin.all
+    if params[:tag]
+      @plugins = Plugin.tagged_with(params[:tag])
+    else
+      @plugins = Plugin.all
+    end
   end
 
   def show
@@ -56,7 +60,7 @@ class PluginsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plugin_params
-      params.require(:plugin).permit(current_user.id, :title, :description, :link)
+      params.require(:plugin).permit(current_user.id, :title, :description, :link, :tag_list, :tag)
     end
 
     def correct_user
@@ -65,4 +69,5 @@ class PluginsController < ApplicationController
         redirect_to root_path
       end
     end
+
 end

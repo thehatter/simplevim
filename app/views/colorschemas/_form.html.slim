@@ -1,0 +1,15 @@
+= form_for @colorschema do |f|
+  - if @colorschema.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@colorschema.errors.count, "error")} prohibited this colorschema from being saved:"
+      ul
+        - @colorschema.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :body
+    = f.text_area :body
+  .actions = f.submit 'Save'

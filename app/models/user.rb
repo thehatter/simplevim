@@ -6,4 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :plugins
   has_many :posts
+  has_many :colorschemas
+  has_many :dotfiles
+  has_many :hacks
 end

@@ -9,7 +9,8 @@ table
     - @posts.each do |post|
       tr
         td = post.title
-        td = raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
+        td = post.user.email
+        td = raw post.tag_list.map { |t| link_to t, posts_tags_path(t) }.join(', ')
         td = link_to 'Show', post
         - if current_user.admin? || current_user.id == post.user_id
           td = link_to 'Edit', edit_post_path(post)
@@ -18,9 +19,13 @@ table
 br
 
 / эта часть для отображения списка ТОП-10 тегов
+h2 Top 10 tags
 
 - @tags.each do |tag|
-  ul = tag.name
+  ul 
+  = tag.name
+  | &nbsp - 
+  = tag.taggings_count
 
 br
 

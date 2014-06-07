@@ -14,15 +14,7 @@
   <%= render 'devise/menu/login_items' %>
 </ul>
 <div id="navbar">
-  <%= link_to 'Listing users', root_path %>
-  ||
-  <%= link_to "Add plugin", new_plugin_path %>
-  ||
-  <%= link_to 'Show all plugins', plugins_path %>
-  ||
-  <%= link_to 'Add Post', new_post_path %>
-  ||
-  <%= link_to 'Show all posts', posts_path %>
+  <%= render "layouts/navbar" %>
 </div>
 
 <body>
